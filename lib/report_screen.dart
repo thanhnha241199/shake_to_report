@@ -136,7 +136,7 @@ class _ReportScreenState extends State<ReportScreen> {
       child: Container(
         height: 80,
         width: 80,
-        child: Icon(Icons.camera_alt_outlined, color: Colors.white),
+        child: Icon(Icons.camera_alt_outlined, color: Colors.black),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
