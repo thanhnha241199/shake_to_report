@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'widget/bottom_space.dart';
 
 class ReportScreen extends StatefulWidget {
   final Function(List<XFile> images, String reason) onReport;
