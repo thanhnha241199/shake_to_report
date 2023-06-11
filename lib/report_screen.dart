@@ -44,6 +44,8 @@ class _ReportScreenState extends State<ReportScreen> {
                     val?.isEmpty ?? false ? 'Enter reason' : null,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   focusedBorder: OutlineInputBorder(
@@ -55,6 +57,10 @@ class _ReportScreenState extends State<ReportScreen> {
                   focusedErrorBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black)),
                   hintText: 'Enter reason',
+                  hintStyle: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w400),
                   errorStyle: Theme.of(context)
                       .textTheme
                       .bodySmall
@@ -130,7 +136,9 @@ class _ReportScreenState extends State<ReportScreen> {
         width: 80,
         child: Icon(Icons.camera_alt_outlined),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(10),
+        ),
       ),
     );
   }
