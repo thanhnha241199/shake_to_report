@@ -46,16 +46,11 @@ class _ReportScreenState extends State<ReportScreen> {
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
-                  disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
-                  focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
+                  border: inputBorder,
+                  focusedBorder: inputBorder,
+                  enabledBorder: inputBorder,
+                  disabledBorder: inputBorder,
+                  focusedErrorBorder: inputBorder,
                   hintText: 'Enter reason',
                   hintStyle: Theme.of(context)
                       .textTheme
@@ -108,6 +103,9 @@ class _ReportScreenState extends State<ReportScreen> {
                   child: Text('Submit'),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
                     maximumSize:
                         MaterialStateProperty.all(Size(double.infinity, 50)),
                     minimumSize:
@@ -120,6 +118,10 @@ class _ReportScreenState extends State<ReportScreen> {
       ),
     );
   }
+
+  OutlineInputBorder get inputBorder => OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.black),
+      borderRadius: BorderRadius.circular(10));
 
   Widget _buildAddImage() {
     return GestureDetector(
@@ -134,9 +136,9 @@ class _ReportScreenState extends State<ReportScreen> {
       child: Container(
         height: 80,
         width: 80,
-        child: Icon(Icons.camera_alt_outlined),
+        child: Icon(Icons.camera_alt_outlined, color: Colors.white),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
       ),
