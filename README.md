@@ -1,7 +1,7 @@
 # shake
 
 Screenshot
-![](image/image.png)
+![](images/image.png)
 
 
 Add in pubspec.yml 
