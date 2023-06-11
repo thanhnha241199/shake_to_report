@@ -31,11 +31,7 @@ class _ReportScreenState extends State<ReportScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20),
-              Text('Reason',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.w600)),
+              Text('Reason', style: labelStyle),
               SizedBox(height: 16),
               TextFormField(
                 maxLines: 5,
@@ -56,19 +52,12 @@ class _ReportScreenState extends State<ReportScreen> {
                       .textTheme
                       .titleMedium
                       ?.copyWith(fontWeight: FontWeight.w400),
-                  errorStyle: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: Colors.red),
+                  errorStyle: errorStyle,
                   labelText: '',
                 ),
               ),
               SizedBox(height: 30),
-              Text('Image',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(fontWeight: FontWeight.w600)),
+              Text('Image', style: labelStyle),
               SizedBox(height: 16),
               Wrap(
                 children: [
@@ -82,10 +71,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 SizedBox(height: 10),
                 Text(
                   'Choose image to upload',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: Colors.red),
+                  style: errorStyle,
                 )
               ],
               Spacer(),
@@ -100,7 +86,9 @@ class _ReportScreenState extends State<ReportScreen> {
                       isValidate = true;
                     });
                   },
-                  child: Text('Submit'),
+                  child: Text('Submit',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600, color: Colors.white)),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -118,6 +106,14 @@ class _ReportScreenState extends State<ReportScreen> {
       ),
     );
   }
+
+  TextStyle? get labelStyle => Theme.of(context)
+      .textTheme
+      .titleMedium
+      ?.copyWith(fontWeight: FontWeight.w600);
+
+  TextStyle? get errorStyle =>
+      Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.red);
 
   OutlineInputBorder get inputBorder => OutlineInputBorder(
       borderSide: BorderSide(color: Colors.black),
