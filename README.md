@@ -1,19 +1,14 @@
 # shake
 
+Add in pubspec.yml
+    shake:
+        git:
+            url: 'https://github.com/thanhnha241199/shake_to_report'
+
 A flutter package to detect phone shakes.
 
-To listen to phone shake:
-
-    ShakeDetector detector = ShakeDetector.autoStart(
-        onPhoneShake: () {
-            // Do stuff on phone shake
-        }
-    );
-
-OR
-
     ShakeDetector detector = ShakeDetector.waitForStart(
-        onPhoneShake: () {
+        onReport: (images, reason) {
             // Do stuff on phone shake
         }
     );

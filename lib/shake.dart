@@ -4,16 +4,15 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
-/// Callback for phone shakes
-typedef void PhoneShakeCallback();
+import 'report_screen.dart';
 
 /// ShakeDetector class for phone shake functionality
 class ShakeDetector {
   /// User callback for phone shake
-  final PhoneShakeCallback onPhoneShake;
+  final Function(List<XFile> images, String reason) onReport;
 
   /// Shake detection threshold
   final double shakeThresholdGravity;
@@ -35,7 +34,7 @@ class ShakeDetector {
 
   /// This constructor waits until [startListening] is called
   ShakeDetector.waitForStart({
-    required this.onPhoneShake,
+    required this.onReport,
     this.shakeThresholdGravity = 2.7,
     this.shakeSlopTimeMS = 500,
     this.shakeCountResetTime = 3000,
@@ -73,9 +72,12 @@ class ShakeDetector {
           mShakeCount++;
 
           if (mShakeCount >= minimumShakeCount) {
-            onPhoneShake();
             Navigator.push(
-                context, MaterialPageRoute(builder: (ctx) => ReportScreen()));
+              context,
+              MaterialPageRoute(
+                builder: (ctx) => ReportScreen(onReport: onReport),
+              ),
+            );
           }
         }
       },
@@ -85,22 +87,5 @@ class ShakeDetector {
   /// Stops listening to accelerometer events
   void stopListening() {
     streamSubscription?.cancel();
-  }
-}
-
-class ReportScreen extends StatefulWidget {
-  const ReportScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ReportScreen> createState() => _ReportScreenState();
-}
-
-class _ReportScreenState extends State<ReportScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Search')),
-      body: Center(child: Text('Report')),
-    );
   }
 }

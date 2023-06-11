@@ -31,13 +31,12 @@ class _DemoPageState extends State<DemoPage> {
   void initState() {
     super.initState();
     ShakeDetector detector = ShakeDetector.waitForStart(
-      onPhoneShake: () {
+      onReport: (images, reason) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Shake!'),
+          SnackBar(
+            content: Text('Submited! ${images.length} images and $reason'),
           ),
         );
-        // Do stuff on phone shake
       },
       minimumShakeCount: 1,
       shakeSlopTimeMS: 500,
